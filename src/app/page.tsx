@@ -78,7 +78,7 @@ export default function Home() {
   return (
     <div className={`${themeMode}`}>
       <header className="max-w-[100vw] min-h-[50px]"></header>
-      <main className='p-5 min-h-[80vh]'>
+      <main className='p-5 min-h-[80vh] pb-0'>
         <div className="max-w-[540px] m-auto md:p-5 pt-0 ">
 
           <motion.div
@@ -137,8 +137,8 @@ export default function Home() {
         className='p-5'
       >
 
-        <footer className='max-w-[540px] m-auto md:p-5 pt-0 '>
-          <div className='pb-10'>
+        <footer className='max-w-[540px] m-auto md:p-5 '>
+          <div className='pb-10 pt-5'>
             <div className="text-[12px]">Connect on <a target="_blank" className='underline' href='https://www.linkedin.com/in/ttreads/'>Linkedin</a></div>
             <div className='flex-col'><h3 className="text-[20px] font-bold tracking-tight text-gray-900 leading-tight">Tyler <br /> Treadwell</h3></div>
             <div className='md:flex justify-between'>

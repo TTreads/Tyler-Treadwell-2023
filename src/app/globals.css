@@ -63,3 +63,7 @@ Dark Mode
 .dark footer:before {
   display: none;
 }
+
+.dark a {
+  color: #fbff7d;
+}
