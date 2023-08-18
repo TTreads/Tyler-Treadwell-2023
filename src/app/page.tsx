@@ -43,7 +43,7 @@ const Jobs: Job[] = [{
 
 let myDate = new Date();
 let hrs = myDate.getHours();
-
+console.log(hrs)
 let themeMode = "";
 
 if (hrs < 12)

@@ -20,6 +20,27 @@ body {
 
 }
 
+footer {
+  position: relative;
+}
+
+footer:before {
+  content: "";
+  width: 92%;
+  height: 1px;
+  background: #e1e1e1;
+  position: absolute;
+  top: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+
+/* 
+Dark Mode
+*/
+
 .dark {
   background: #0d0d0c;
 }
@@ -39,18 +60,6 @@ body {
   fill: white !important;
 }
 
-footer {
-  position: relative;
-}
-
-footer:before {
-  content: "";
-  width: 92%;
-  height: 1px;
-  background: #e1e1e1;
-  position: absolute;
-  top: 0;
-  margin: auto;
-  left: 0;
-  right: 0;
+.dark footer:before {
+  display: none;
 }
