@@ -123,8 +123,8 @@ export default function Home() {
               <img className="h-[92px] w-[92px] rounded-full" src={tyler.src} alt="Tyler Treadwell" />
 
               <div>
-                <h3 className="text-[24px] font-bold leading-7 tracking-tight text-gray-900">Tyler Treadwell</h3>
-                <p className="text-sm font-normal leading-6 text-[#555]">UI Engineer in New York, <span className="text-[#8b8b8b]">He/Him</span></p>
+                <h3 className="text-[24px] font-bold leading-7 tracking-tight text-[#282C32]">Tyler Treadwell</h3>
+                <p className="text-sm font-normal leading-6 text-[#555]">UI Engineer in New York</p>
               </div>
 
             </div>
@@ -133,7 +133,7 @@ export default function Home() {
             <div className='mt-8'>
 
               <h3 className='text-[14px]'>About</h3>
-              <p><Balancer>I am a forward-thinking UI engineer, and entrepreneur. My day to day involves assisting founders in creating end-to-end SaaS solutions for their clients.</Balancer></p>
+              <p className='text-[#282C32]'><Balancer>I am a forward-thinking UI engineer, and entrepreneur. My day to day involves assisting founders in creating end-to-end SaaS solutions for their clients.</Balancer></p>
             </div>
           </motion.div>
           <div className='mt-8'>
@@ -172,7 +172,7 @@ export default function Home() {
 
         <footer className='max-w-[540px] m-auto md:p-5 '>
           <div className='pb-10 pt-5'>
-            <div className='flex-col'><h3 className="text-[20px] font-bold tracking-tight text-gray-900 leading-tight"><span aria-label='ttrds. Tyler Treadwell Designs'>ttrds.</span></h3></div>
+            <div className='flex-col'><h3 className="text-[20px] font-bold tracking-tight text-[#282C32] leading-tight"><span aria-label='ttrds. Tyler Treadwell Designs'>ttrds.</span></h3></div>
             <div className='md:flex justify-between'>
 
               <div className='flex-col text-[12px] mt-2 text-left'>
