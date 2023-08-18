@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import tyler from '@/app/tyler.jpg'
 import { motion } from "framer-motion"
 import { Balancer } from 'react-wrap-balancer'
+import Image from 'next/image'
 
 const Jobs: Job[] = [{
   title: `Technical Web Consultant`,
@@ -120,7 +121,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center gap-x-5">
-              <img className="h-[92px] w-[92px] rounded-full" src={tyler.src} alt="Tyler Treadwell" />
+              <Image width={92} height={92} className="rounded-full" src={tyler.src} alt="Tyler Treadwell" />
 
               <div>
                 <h3 className="text-[24px] font-bold leading-7 tracking-tight text-[#282C32]">Tyler Treadwell</h3>
