@@ -134,9 +134,11 @@ export default function Home() {
         initial={{ opacity: 0, y: 20 }} // Initial state (hidden)
         animate={{ opacity: 1, y: 0 }}  // Animation to apply
         transition={{ duration: 0.5, delay: FadeDuration * 0.3 }} // Duration and delay
+        className='p-5'
       >
-        <footer className='max-w-[540px] m-auto'>
-          <div className='p-5'>
+
+        <footer className='max-w-[540px] m-auto md:p-5 pt-0 '>
+          <div className='pb-10'>
             <div className="text-[12px]">Connect on <a target="_blank" className='underline' href='https://www.linkedin.com/in/ttreads/'>Linkedin</a></div>
             <div className='flex-col'><h3 className="text-[20px] font-bold tracking-tight text-gray-900 leading-tight">Tyler <br /> Treadwell</h3></div>
             <div className='md:flex justify-between'>
@@ -163,7 +165,7 @@ function ExperienceItem(props: any) {
       <small className='text-[#8b8b8b]'>{props.Job.date}</small>
     </div>
     <div className="job align-left">
-      <a className="flex align-center gap-1" target={props.Job.link ? "_blank" : "none"} href={props.Job.link ? props.Job.link : "#"}> <span className='text-[14px]'>{props.Job.title} at {props.Job.companyName}</span><span style={{ whiteSpace: "nowrap" }}><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 3C3.22386 3 3 3.22386 3 3.5C3 3.77614 3.22386 4 3.5 4V3ZM8.5 3.5H9C9 3.22386 8.77614 3 8.5 3V3.5ZM8 8.5C8 8.77614 8.22386 9 8.5 9C8.77614 9 9 8.77614 9 8.5H8ZM2.64645 8.64645C2.45118 8.84171 2.45118 9.15829 2.64645 9.35355C2.84171 9.54882 3.15829 9.54882 3.35355 9.35355L2.64645 8.64645ZM3.5 4H8.5V3H3.5V4ZM8 3.5V8.5H9V3.5H8ZM8.14645 3.14645L2.64645 8.64645L3.35355 9.35355L8.85355 3.85355L8.14645 3.14645Z" fill="#111"></path></svg></span></a> <small className='text-[14px] text-[#8b8b8b]'>{props.Job.location}</small>
+      <a className="flex align-center gap-1" target={props.Job.link ? "_blank" : "none"} href={props.Job.link ? props.Job.link : "#"}><span className='text-[14px]'>{<Balancer>{props.Job.title}</Balancer>} at {props.Job.companyName}</span><span style={{ whiteSpace: "nowrap" }}><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 3C3.22386 3 3 3.22386 3 3.5C3 3.77614 3.22386 4 3.5 4V3ZM8.5 3.5H9C9 3.22386 8.77614 3 8.5 3V3.5ZM8 8.5C8 8.77614 8.22386 9 8.5 9C8.77614 9 9 8.77614 9 8.5H8ZM2.64645 8.64645C2.45118 8.84171 2.45118 9.15829 2.64645 9.35355C2.84171 9.54882 3.15829 9.54882 3.35355 9.35355L2.64645 8.64645ZM3.5 4H8.5V3H3.5V4ZM8 3.5V8.5H9V3.5H8ZM8.14645 3.14645L2.64645 8.64645L3.35355 9.35355L8.85355 3.85355L8.14645 3.14645Z" fill="#111"></path></svg></span></a> <small className='text-[14px] text-[#8b8b8b]'>{props.Job.location}</small>
     </div>
   </div>
 }
