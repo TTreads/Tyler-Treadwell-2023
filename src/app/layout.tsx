@@ -4,7 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Provider } from 'react-wrap-balancer'
 
 export const metadata: Metadata = {
-  title: 'Tyler Treadwell',
+  title: 'Tyler Treadwell; Entrepreneur, UI Engineer',
   description: `Tyler Treadwell is an entrepreneur and ui engineer working with mostly software. Browse the site to see what he's up to`,
 }
 
