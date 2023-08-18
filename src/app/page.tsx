@@ -108,7 +108,7 @@ export default function Home() {
             <div className='mt-8'>
 
               <h3 className='text-[14px]'>About</h3>
-              <p><Balancer>I'm ui engineer, optimist, and entrepreneur. I currently work as contract web consultant. Helping founders build end to end SaaS solutions for their clients.</Balancer></p>
+              <p><Balancer>I am a forward-thinking UI engineer, and entrepreneur. My day to day involves assisting founders in creating end-to-end SaaS solutions for their clients.</Balancer></p>
             </div>
           </motion.div>
           <div className='mt-8'>
@@ -148,7 +148,7 @@ export default function Home() {
         <footer className='max-w-[540px] m-auto md:p-5 '>
           <div className='pb-10 pt-5'>
             <div className="text-[12px]">Connect on <a target="_blank" className='underline' href='https://www.linkedin.com/in/ttreads/'>Linkedin</a></div>
-            <div className='flex-col'><h3 className="text-[20px] font-bold tracking-tight text-gray-900 leading-tight">Tyler <br /> Treadwell</h3></div>
+            <div className='flex-col'><h3 className="text-[20px] font-bold tracking-tight text-gray-900 leading-tight"><span aria-label='ttrds. Tyler Treadwell Designs'>ttrds.</span></h3></div>
             <div className='md:flex justify-between'>
 
               <div className='flex-col text-[12px] mt-2 text-left'>
