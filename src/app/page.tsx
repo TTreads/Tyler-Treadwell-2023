@@ -153,7 +153,7 @@ export default function Home() {
 
               <div className='flex-col text-[12px] mt-2 text-left'>
                 <p>Find me on <a target="_blank" className='underline' href="https://dribbble.com/ttreads">Dribbble</a></p>
-                <p>Browse my repos on <a target="_blank" className='underline' href="https://github.com/ttreads">Github</a></p>
+                <p>Browse my code on <a target="_blank" className='underline' href="https://github.com/ttreads">Github</a></p>
               </div>
               <div className='flex-col text-[12px] mt-2 md:text-right'>
                 <p>Built using <a target='_blank' className='underline' href='https://nextjs.org/?via=TylerTreadwell'>NextJS</a></p>
