@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import tyler from '@/app/tyler.jpg'
 import { motion } from "framer-motion"
-
+import { Balancer } from 'react-wrap-balancer'
 const Jobs: Job[] = [{
   title: `Tech Consulting`,
   companyName: `Freelance`,
@@ -86,7 +86,7 @@ export default function Home() {
             <div className='mt-8'>
 
               <h3 className='text-[14px]'>About</h3>
-              <p>I'm ui engineer, optimist, and entrepreneur. I currently work as contract web consultant. Helping founders build end to end SaaS solutions for their clients.</p>
+              <p><Balancer>I'm ui engineer, optimist, and entrepreneur. I currently work as contract web consultant. Helping founders build end to end SaaS solutions for their clients.</Balancer></p>
             </div>
           </motion.div>
           <div className='mt-8'>
@@ -144,7 +144,6 @@ export default function Home() {
   )
 }
 function ExperienceItem(props: any) {
-  console.log(props.Job)
   return <div className="experience_item mt-5 md:flex justify-left gap-8">
     <div className="experience_date">
       <small className='text-[#8b8b8b]'>{props.Job.date}</small>

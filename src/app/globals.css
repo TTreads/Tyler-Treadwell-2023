@@ -20,6 +20,25 @@ body {
 
 }
 
+body.dark {
+  background: #0d0d0c;
+}
+
+body.dark h3,
+body.dark h2,
+body.dark h1,
+body.dark p {
+  color: #ebf1ff !important;
+}
+
+body.dark {
+  color: #ebf1ff !important;
+}
+
+body.dark svg path {
+  fill: white !important;
+}
+
 footer {
   position: relative;
 }

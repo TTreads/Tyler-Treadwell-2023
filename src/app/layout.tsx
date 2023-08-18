@@ -12,9 +12,27 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  let time = new Date();
+  let hrs = time.getHours();
+
+  let themeMode;
+
+  if (hrs < 12) {
+    themeMode = "light"
+  }
+  if (hrs >= 12 && hrs <= 17) {
+
+    themeMode = 'dark';
+  }
+  if (hrs >= 17 && hrs <= 24) {
+    themeMode = 'dark';
+
+  }
+
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${themeMode}`}>{children}</body>
     </html>
   )
 }
