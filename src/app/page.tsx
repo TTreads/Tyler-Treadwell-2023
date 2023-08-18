@@ -91,7 +91,7 @@ export default function Home() {
       }
 
       if (hrs >= 12 && hrs <= 17) {
-        setTheme('dark_theme');
+        setTheme('light');
       }
 
       if (hrs >= 17 && hrs <= 24) {
@@ -119,7 +119,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}  // Animation to apply
             transition={{ duration: 0.5 }}
           >
-            <div className="flex items-center gap-x-6">
+            <div className="flex items-center gap-x-5">
               <img className="h-[92px] w-[92px] rounded-full" src={tyler.src} alt="Tyler Treadwell" />
 
               <div>
