@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import tyler from '@/app/tyler.jpg'
 import { motion } from "framer-motion"
 import { Balancer } from 'react-wrap-balancer'
+
 const Jobs: Job[] = [{
   title: `Technical Web Consultant`,
   companyName: ``,
@@ -56,6 +57,8 @@ export default function Home() {
   const [Year, setYear] = React.useState(0)
   const [FadeDuration, setFadeDuration] = React.useState(0)
   const [Theme, setTheme] = React.useState("light")
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
+
   useEffect(() => {
     let date = new Date()
     let year = date.getFullYear();
@@ -64,24 +67,42 @@ export default function Home() {
     let fadeDur = Jobs.length
     setFadeDuration(fadeDur)
 
-    let myDate = new Date();
-    let hrs = myDate.getHours();
-    console.log(hrs)
-    let themeMode = "";
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-    if (hrs < 12) {
-      setTheme('light');
+
+
+    // Initial check
+    setIsDarkMode(darkModeMediaQuery.matches);
+
+
+    if (isDarkMode == false) {
+
+      let myDate = new Date();
+      let hrs = myDate.getHours();
+      console.log(hrs)
+
+
+      if (hrs < 12) {
+        setTheme('light');
+      }
+
+      if (hrs >= 12 && hrs <= 17) {
+        setTheme('dark_theme');
+      }
+
+      if (hrs >= 17 && hrs <= 24) {
+
+        setTheme('dark_theme');
+      }
     }
 
-    if (hrs >= 12 && hrs <= 17) {
+    if (isDarkMode == true) {
       setTheme('dark_theme');
     }
 
-    if (hrs >= 17 && hrs <= 24) {
 
-      setTheme('dark_theme');
-    }
-  })
+
+  }, [isDarkMode])
 
   return (
     <div className={`${Theme}`}>
