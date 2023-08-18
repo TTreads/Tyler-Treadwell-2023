@@ -41,29 +41,29 @@ footer:before {
 Dark Mode
 */
 
-.dark {
+.dark_theme {
   background: #0d0d0c;
 }
 
-.dark h3,
-.dark h2,
-.dark h1,
-.dark p {
+.dark_theme h3,
+.dark_theme h2,
+.dark_theme h1,
+.dark_theme p {
   color: #ebf1ff !important;
 }
 
-.dark {
+.dark_theme {
   color: #ebf1ff !important;
 }
 
-.dark svg path {
+.dark_theme svg path {
   fill: white !important;
 }
 
-.dark footer:before {
+.dark_theme footer:before {
   display: none;
 }
 
-.dark a {
+.dark_theme a {
   color: #fbff7d;
 }
