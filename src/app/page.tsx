@@ -69,7 +69,11 @@ export default function Home() {
 
     const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
+    const handleDarkModeChange = (event: { matches: boolean | ((prevState: boolean) => boolean) }) => {
+      setIsDarkMode(event.matches);
+    };
 
+    darkModeMediaQuery.addEventListener('change', handleDarkModeChange);
 
     // Initial check
     setIsDarkMode(darkModeMediaQuery.matches);
