@@ -41,23 +41,7 @@ const Jobs: Job[] = [{
 ]
 
 
-let myDate = new Date();
-let hrs = myDate.getHours();
-console.log(hrs)
-let themeMode = "";
 
-if (hrs < 12) {
-  themeMode = 'light';
-}
-
-if (hrs >= 12 && hrs <= 17) {
-  themeMode = 'dark_theme';
-}
-
-if (hrs >= 17 && hrs <= 24) {
-
-  themeMode = 'dark_theme';
-}
 
 
 interface Job {
@@ -71,7 +55,7 @@ interface Job {
 export default function Home() {
   const [Year, setYear] = React.useState(0)
   const [FadeDuration, setFadeDuration] = React.useState(0)
-
+  const [Theme, setTheme] = React.useState("light")
   useEffect(() => {
     let date = new Date()
     let year = date.getFullYear();
@@ -79,10 +63,28 @@ export default function Home() {
 
     let fadeDur = Jobs.length
     setFadeDuration(fadeDur)
+
+    let myDate = new Date();
+    let hrs = myDate.getHours();
+    console.log(hrs)
+    let themeMode = "";
+
+    if (hrs < 12) {
+      setTheme('light');
+    }
+
+    if (hrs >= 12 && hrs <= 17) {
+      setTheme('dark_theme');
+    }
+
+    if (hrs >= 17 && hrs <= 24) {
+
+      setTheme('dark_theme');
+    }
   })
 
   return (
-    <div className={`${themeMode}`}>
+    <div className={`${Theme}`}>
       <header className="max-w-[100vw] min-h-[50px]"></header>
       <main className='p-5 min-h-[80vh] pb-0'>
         <div className="max-w-[540px] m-auto md:p-5 pt-0 ">
