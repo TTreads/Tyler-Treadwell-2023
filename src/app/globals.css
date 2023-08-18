@@ -20,22 +20,22 @@ body {
 
 }
 
-body.dark {
+.dark {
   background: #0d0d0c;
 }
 
-body.dark h3,
-body.dark h2,
-body.dark h1,
-body.dark p {
+.dark h3,
+.dark h2,
+.dark h1,
+.dark p {
   color: #ebf1ff !important;
 }
 
-body.dark {
+.dark {
   color: #ebf1ff !important;
 }
 
-body.dark svg path {
+.dark svg path {
   fill: white !important;
 }
 

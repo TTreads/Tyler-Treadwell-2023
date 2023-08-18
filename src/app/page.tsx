@@ -40,6 +40,20 @@ const Jobs: Job[] = [{
 },
 ]
 
+
+let myDate = new Date();
+let hrs = myDate.getHours();
+
+let themeMode = "";
+
+if (hrs < 12)
+  themeMode = 'light';
+else if (hrs >= 12 && hrs <= 17)
+  themeMode = 'dark';
+else if (hrs >= 17 && hrs <= 24)
+  themeMode = 'dark';
+
+
 interface Job {
   title: string;
   companyName: string;
@@ -62,7 +76,7 @@ export default function Home() {
   })
 
   return (
-    <>
+    <div className={`${themeMode}`}>
       <header className="max-w-[100vw] min-h-[50px]"></header>
       <main className='p-5 min-h-[80vh]'>
         <div className="max-w-[540px] m-auto md:p-5 pt-0 ">
@@ -140,7 +154,7 @@ export default function Home() {
           </div>
         </footer>
       </motion.div>
-    </>
+    </div>
   )
 }
 function ExperienceItem(props: any) {
