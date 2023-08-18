@@ -21,11 +21,11 @@ export default function RootLayout({
   if (hrs < 12) {
     themeMode = "light"
   }
-  if (hrs >= 12 && hrs <= 17) {
+  else if (hrs >= 12 && hrs <= 17) {
 
     themeMode = 'dark';
   }
-  if (hrs >= 17 && hrs <= 24) {
+  else if (hrs >= 17 && hrs <= 24) {
     themeMode = 'dark';
 
   }
