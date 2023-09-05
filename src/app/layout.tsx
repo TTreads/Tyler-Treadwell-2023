@@ -1,7 +1,9 @@
+
 import './globals.css'
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react';
 import { Provider } from 'react-wrap-balancer'
+import MainLayout from '@/components/MainLayout';
 
 export const metadata: Metadata = {
   title: 'Tyler Treadwell; Entrepreneur, UI Engineer',
@@ -20,7 +22,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Provider>
-          {children}
+          <MainLayout>
+            {children}
+          </MainLayout>
         </Provider>
         <Analytics />
       </body>

@@ -1,10 +1,7 @@
 'use client'
-import React, { useEffect } from 'react'
-import tyler from '@/app/tyler.jpg'
+import React from 'react'
 import { motion } from "framer-motion"
 import { Balancer } from 'react-wrap-balancer'
-import Image from 'next/image'
-
 const Jobs: Job[] = [{
   title: `Technical Web Consultant`,
   companyName: ``,
@@ -41,11 +38,6 @@ const Jobs: Job[] = [{
   link: `https://tylertreadwell.com`,
 },
 ]
-
-
-
-
-
 interface Job {
   title: string;
   companyName: string;
@@ -53,147 +45,28 @@ interface Job {
   date?: string;
   link?: string;
 }
-
-export default function Home() {
-  const [Year, setYear] = React.useState(0)
-  const [FadeDuration, setFadeDuration] = React.useState(0)
-  const [Theme, setTheme] = React.useState("light")
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
-
-  useEffect(() => {
-    let date = new Date()
-    let year = date.getFullYear();
-    setYear(year)
-
-    let fadeDur = Jobs.length
-    setFadeDuration(fadeDur)
-
-    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-    const handleDarkModeChange = (event: { matches: boolean | ((prevState: boolean) => boolean) }) => {
-      setIsDarkMode(event.matches);
-    };
-
-    darkModeMediaQuery.addEventListener('change', handleDarkModeChange);
-
-    // Initial check
-    setIsDarkMode(darkModeMediaQuery.matches);
-
-
-    if (isDarkMode == false) {
-
-      let myDate = new Date();
-      let hrs = myDate.getHours();
-      console.log(hrs)
-
-
-      if (hrs < 12) {
-        setTheme('light');
-      }
-
-      if (hrs >= 12 && hrs <= 17) {
-        setTheme('light');
-      }
-
-      if (hrs >= 17 && hrs <= 24) {
-
-        setTheme('dark_theme');
-      }
-    }
-
-    if (isDarkMode == true) {
-      setTheme('dark_theme');
-    }
-
-
-
-  }, [isDarkMode])
-
+function Home() {
   return (
-    <div className={`${Theme}`}>
-      <header className="max-w-[100vw] min-h-[50px]"></header>
-      <main className='p-5 min-h-[80vh] pb-0'>
-        <div className="max-w-[640px] m-auto md:p-5 pt-0 ">
+    <>  {Jobs.map((job, index) => <>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} // Initial state (hidden)
-            animate={{ opacity: 1, y: 0 }}  // Animation to apply
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex items-center gap-x-5">
-              {/* <Image width={92} height={92} className="rounded-full" src={tyler.src} alt="Tyler Treadwell" /> */}
+      {
 
-              <div>
-                <h3 className="text-[24px] font-bold leading-7 tracking-tight text-[#282C32]">Tyler Treadwell</h3>
-                <p className="text-sm font-normal leading-6 text-[#555]">UI Engineer in New York</p>
-                <div className="status flex align-center gap-2"><div className="blink"></div> <small className='uppercase text-[10px] font-bold relative mt-1' aria-label="Activity status building">building</small></div>
-              </div>
-
-            </div>
-
-
-            <div className='mt-8'>
-
-              <h3 className='text-[14px]'>About</h3>
-              <p className='text-[#282C32]'><Balancer>I am a forward-thinking UI engineer, and entrepreneur. My day to day involves assisting founders in creating end-to-end SaaS solutions for their clients.</Balancer></p>
-            </div>
-          </motion.div>
-          <div className='mt-8'>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} // Initial state (hidden)
-              animate={{ opacity: 1, y: 0 }}  // Animation to apply
-              transition={{ duration: 0.5 }}
-            >
-              <h3 className='text-[14px]'>Work Experience</h3>
-            </motion.div>
-            {Jobs.map((job, index) => <>
-
-              {
-
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }} // Initial state (hidden)
-                  animate={{ opacity: 1, y: 0 }}  // Animation to apply
-                  transition={{ duration: 0.5, delay: index * 0.3 }} // Duration and delay
-                >
-                  <ExperienceItem Job={job} key={index} />
-                </motion.div>
-              }
-            </>)}
-          </div>
-
-        </div>
-      </main>
-      <motion.div
-        key={FadeDuration}
-        initial={{ opacity: 0, y: 20 }} // Initial state (hidden)
-        animate={{ opacity: 1, y: 0 }}  // Animation to apply
-        transition={{ duration: 0.5, delay: FadeDuration * 0.3 }} // Duration and delay
-        className='p-5'
-      >
-
-        <footer className='max-w-[640px] m-auto md:p-5 '>
-          <div className='pb-10 pt-5'>
-            <div className='flex-col'><h3 className="text-[20px] font-bold tracking-tight text-[#282C32] leading-tight"><span aria-label='ttrds. Tyler Treadwell Designs'>ttrds.</span></h3></div>
-            <div className='md:flex justify-between'>
-
-              <div className='flex-col text-[12px] mt-2 text-left'>
-                <p>Find me on <a target="_blank" className='underline' href='https://www.linkedin.com/in/ttreads/'>LinkedIn</a>, <a target="_blank" className='underline' href="https://dribbble.com/ttreads">Dribbble</a></p>
-                <p>Browse my code on <a target="_blank" className='underline' href="https://github.com/ttreads">GitHub</a></p>
-              </div>
-
-              <div className='flex-col text-[12px]  md:text-right'>
-                <p>Built using <a target='_blank' className='underline' href='https://nextjs.org/?via=TylerTreadwell'>Next.js</a></p>
-                <p className='text-[12px]'>&copy; {Year} All Rights Reserved</p>
-              </div>
-
-            </div>
-          </div>
-        </footer>
-      </motion.div>
-    </div>
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }} // Initial state (hidden)
+          animate={{ opacity: 1, y: 0 }}  // Animation to apply
+          transition={{ duration: 0.5, delay: index * 0.3 }} // Duration and delay
+        >
+          <ExperienceItem Job={job} key={index} />
+        </motion.div>
+      }
+    </>)}</>
   )
 }
+
+export default Home
+
+
 function ExperienceItem(props: any) {
   return <div className="experience_item mt-5 md:flex justify-left gap-8">
     <div className="experience_date">
@@ -204,4 +77,3 @@ function ExperienceItem(props: any) {
     </div>
   </div>
 }
-
