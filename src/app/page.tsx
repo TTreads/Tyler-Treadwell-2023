@@ -121,7 +121,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center gap-x-5">
-              <Image width={92} height={92} className="rounded-full" src={tyler.src} alt="Tyler Treadwell" />
+              {/* <Image width={92} height={92} className="rounded-full" src={tyler.src} alt="Tyler Treadwell" /> */}
 
               <div>
                 <h3 className="text-[24px] font-bold leading-7 tracking-tight text-[#282C32]">Tyler Treadwell</h3>
@@ -181,7 +181,8 @@ export default function Home() {
                 <p>Find me on <a target="_blank" className='underline' href='https://www.linkedin.com/in/ttreads/'>LinkedIn</a>, <a target="_blank" className='underline' href="https://dribbble.com/ttreads">Dribbble</a></p>
                 <p>Browse my code on <a target="_blank" className='underline' href="https://github.com/ttreads">GitHub</a></p>
               </div>
-              <div className='flex-col text-[12px] mt-2 md:text-right'>
+
+              <div className='flex-col text-[12px]  md:text-right'>
                 <p>Built using <a target='_blank' className='underline' href='https://nextjs.org/?via=TylerTreadwell'>Next.js</a></p>
                 <p className='text-[12px]'>&copy; {Year} All Rights Reserved</p>
               </div>
