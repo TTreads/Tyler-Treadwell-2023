@@ -6,6 +6,7 @@ import { Balancer } from 'react-wrap-balancer'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import NavTabs from '@/components/NavTabs'
+import Link from 'next/link'
 
 const Jobs: Job[] = [{
     title: `Technical Web Consultant`,
@@ -46,7 +47,8 @@ const Jobs: Job[] = [{
 
 const Tabs: Tab[] = [
     { name: 'Experience', href: 'experience', current: true },
-    { name: 'Latest Projects', href: 'projects', current: false },
+    // { name: 'Consulting', href: 'consulting', current: false },
+    // { name: 'Latest Projects', href: 'projects', current: false },
 
 ]
 
@@ -74,7 +76,7 @@ export default function MainLayout({
     const [FadeDuration, setFadeDuration] = React.useState(0)
     const [Theme, setTheme] = React.useState("light")
     const [isDarkMode, setIsDarkMode] = React.useState(false);
-
+    const [CurrentDomain, setCurrentDomain] = React.useState("")
     useEffect(() => {
         let date = new Date()
         let year = date.getFullYear();
@@ -83,16 +85,22 @@ export default function MainLayout({
         let fadeDur = Jobs.length
         setFadeDuration(fadeDur)
 
-        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        if (typeof window !== 'undefined') {
 
-        const handleDarkModeChange = (event: { matches: boolean | ((prevState: boolean) => boolean) }) => {
-            setIsDarkMode(event.matches);
-        };
+            const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-        darkModeMediaQuery.addEventListener('change', handleDarkModeChange);
+            const handleDarkModeChange = (event: { matches: boolean | ((prevState: boolean) => boolean) }) => {
+                setIsDarkMode(event.matches);
+            };
 
-        // Initial check
-        setIsDarkMode(darkModeMediaQuery.matches);
+            darkModeMediaQuery.addEventListener('change', handleDarkModeChange);
+
+            // Initial check
+            setIsDarkMode(darkModeMediaQuery.matches);
+
+            setCurrentDomain(window.location.origin)
+
+        }
 
 
         if (isDarkMode == false) {
@@ -139,15 +147,17 @@ export default function MainLayout({
                             {/* <Image width={92} height={92} className="rounded-full" src={tyler.src} alt="Tyler Treadwell" /> */}
 
                             <div>
-                                <h3 className="text-[21pt] font-bold leading-7 tracking-tight text-[#282C32]">Tyler Treadwell</h3>
+                                <Link href={CurrentDomain}>
+                                    <h3 className="text-[21pt] font-bold leading-7 tracking-tight text-[#282C32]">Tyler Treadwell</h3>
+                                </Link>
                                 <p className="text-sm font-normal leading-6 text-[#555]">UI Engineer in New York</p>
-                                <div className="status flex align-center gap-2"><div className="blink"></div> <small className='uppercase text-[10px] font-bold relative mt-1' aria-label="Activity status building">building</small></div>
+                                {/* <div className="status flex align-center gap-2"><div className="blink"></div> <small className='uppercase text-[10px] font-bold relative mt-1' aria-label="Activity status building">building</small></div> */}
                             </div>
 
                         </div>
 
 
-                        <div className='mt-8'>
+                        <div className='pt-8 pb-8'>
 
                             <h3 className='text-[14px]'>About</h3>
                             <p className='text-[#282C32]'><Balancer>I am a forward-thinking UI engineer, and entrepreneur. My day to day involves assisting founders in creating end-to-end SaaS solutions for their clients.</Balancer></p>

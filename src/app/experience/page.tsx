@@ -2,20 +2,23 @@
 import React from 'react'
 import { motion } from "framer-motion"
 import { Balancer } from 'react-wrap-balancer'
+import { UUID } from 'crypto'
 const Jobs: Job[] = [{
+    id: 1,
     title: `Technical Web Consultant`,
     companyName: ``,
     location: `Remote`,
     date: `2022 — Now`,
     link: `https://tylertreadwell.com`,
 }, {
-
+    id: 2,
     title: `UI Designer`,
     companyName: `Broadridge`,
     location: `New York`,
     date: `2019 — 2022`,
     link: `https://www.broadridge.com/`,
 }, {
+    id: 3,
     title: `Founder`,
     companyName: `Zimute Media Inc`,
     location: `New York`,
@@ -24,6 +27,7 @@ const Jobs: Job[] = [{
 
 },
 {
+    id: 4,
     title: `Full Stack Web Engineer`,
     companyName: `Event Horizon Travel`,
     location: `Remote`,
@@ -31,6 +35,7 @@ const Jobs: Job[] = [{
     link: `https://eventhorizontravel.com/`,
 },
 {
+    id: 5,
     title: `Freelance`,
     companyName: `TTreads Designs`,
     location: `Remote`,
@@ -39,6 +44,7 @@ const Jobs: Job[] = [{
 },
 ]
 interface Job {
+    id: number,
     title: string;
     companyName: string;
     location: string;
