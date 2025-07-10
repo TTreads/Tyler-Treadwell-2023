@@ -103,30 +103,7 @@ export default function MainLayout({
         }
 
 
-        if (isDarkMode == false) {
-
-            let myDate = new Date();
-            let hrs = myDate.getHours();
-            console.log(hrs)
-
-
-            if (hrs < 12) {
-                setTheme('light');
-            }
-
-            if (hrs >= 12 && hrs <= 17) {
-                setTheme('light');
-            }
-
-            if (hrs >= 17 && hrs <= 24) {
-
-                setTheme('dark_theme');
-            }
-        }
-
-        if (isDarkMode == true) {
-            setTheme('dark_theme');
-        }
+        setTheme('light');
 
 
 

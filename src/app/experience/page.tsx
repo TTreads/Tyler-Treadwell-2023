@@ -53,20 +53,18 @@ interface Job {
 }
 function ExperiencePage() {
     return (
-        <>  {Jobs.map((job, index) => <>
-
-            {
-
+        <> 
+            {Jobs.map((job, index) => (
                 <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }} // Initial state (hidden)
-                    animate={{ opacity: 1, y: 0 }}  // Animation to apply
-                    transition={{ duration: 0.5, delay: index * 0.3 }} // Duration and delay
+                    key={job.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.3 }}
                 >
-                    <ExperienceItem Job={job} key={index} />
+                    <ExperienceItem Job={job} />
                 </motion.div>
-            }
-        </>)}</>
+            ))}
+        </>
     )
 }
 
