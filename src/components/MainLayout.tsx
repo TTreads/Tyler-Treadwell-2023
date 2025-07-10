@@ -111,7 +111,7 @@ export default function MainLayout({
 
     return (
         <div className={`${Theme}`}>
-            <header className="max-w-[100vw] min-h-[30px]"></header>
+            {/* <header className="max-w-[100vw] min-h-[30px]"></header> */}
             <main className='p-5 pt-0 min-h-[80vh] pb-0'>
                 <div className="max-w-[640px] m-auto md:p-5 pt-0 ">
 
@@ -124,21 +124,21 @@ export default function MainLayout({
                             {/* <Image width={92} height={92} className="rounded-full" src={tyler.src} alt="Tyler Treadwell" /> */}
 
                             <div>
-                                <Link href={CurrentDomain}>
+                                {/* <Link href={CurrentDomain}>
                                     <h3 className="text-[21pt] font-bold leading-7 tracking-tight text-[#282C32]">Tyler Treadwell</h3>
                                 </Link>
-                                <p className="text-sm font-normal leading-6 text-[#555]">UI Engineer in New York</p>
+                                <p className="text-sm font-normal leading-6 text-[#555]">UI Engineer in New York</p> */}
                                 {/* <div className="status flex align-center gap-2"><div className="blink"></div> <small className='uppercase text-[10px] font-bold relative mt-1' aria-label="Activity status building">building</small></div> */}
                             </div>
 
                         </div>
 
 
-                        <div className='pt-8 pb-8'>
+                        {/* <div className='pt-8 pb-8'>
 
                             <h3 className='text-[14px]'>About</h3>
                             <p className='text-[#282C32]'><Balancer>I am a forward-thinking UI engineer, and entrepreneur. My day to day involves assisting founders in creating end-to-end SaaS solutions for their clients.</Balancer></p>
-                        </div>
+                        </div> */}
                     </motion.div>
 
                     <motion.div
@@ -147,7 +147,7 @@ export default function MainLayout({
                         transition={{ duration: 0.5 }}
                     >
 
-                        <NavTabs tabs={Tabs} />
+                        {/* <NavTabs tabs={Tabs} /> */}
                     </motion.div>
 
                     <div className='mt-8'>

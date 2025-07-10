@@ -1,6 +1,6 @@
 function Footer(props: any) {
     return <footer className='max-w-[640px] m-auto md:p-5'>
-        <div className='pb-10 pt-1'>
+        <div className='p-5'>
             <div className='flex-col'><h3 className="text-[20px] font-bold tracking-tight text-[#282C32] leading-tight"><span aria-label='ttrds. Tyler Treadwell Designs'>ttrds.</span></h3></div>
             <div className='md:flex justify-between'>
 
