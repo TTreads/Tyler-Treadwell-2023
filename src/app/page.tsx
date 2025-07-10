@@ -46,7 +46,7 @@ const Jobs: Job[] = [
     companyName: `TTreads Designs`,
     location: `Remote`,
     date: `2014 — 2019`,
-    link: `https://tylertreadwell.com`,
+    link: `https://tylertreadwell.dev`,
   },
 ];
 
