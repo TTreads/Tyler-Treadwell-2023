@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     await resend.emails.send({
       from: 'Tyler Payments <payments@tylertreadwell.dev>',
       to: recipient,
-      reply_to: email,
+      replyTo: email,
       subject: `Payment note from ${name}`,
       text: emailBody,
     });
