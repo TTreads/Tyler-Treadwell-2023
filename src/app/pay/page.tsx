@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Balancer } from 'react-wrap-balancer';
+import { ChangeEvent, FormEvent, useMemo, useState } from 'react';
 
 const Notes = [
   {
@@ -20,6 +21,54 @@ const Notes = [
 ];
 
 export default function PayPage() {
+  const [formValues, setFormValues] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const isSubmitDisabled = useMemo(() => {
+    return (
+      status === 'loading' ||
+      !formValues.name.trim() ||
+      !formValues.email.trim() ||
+      formValues.message.trim().length < 10
+    );
+  }, [formValues, status]);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setFormValues((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isSubmitDisabled) return;
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/pay-note', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formValues),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Unable to send note.');
+      }
+
+      setStatus('success');
+      setFormValues({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong.');
+    } finally {
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
+
   return (
     <main className="min-h-screen bg-white text-black flex flex-col justify-start items-center px-6 pt-24 pb-16">
       <div className="w-full max-w-2xl text-center space-y-6">
@@ -67,6 +116,107 @@ export default function PayPage() {
           </Link>
         </motion.div>
       </div>
+
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.8 }}
+        className="w-full max-w-2xl mt-16"
+      >
+        <form
+          onSubmit={handleSubmit}
+          className="border border-gray-200 rounded-2xl p-8 space-y-6 bg-white/80 shadow-sm font-serif"
+        >
+          <div className="space-y-2 text-left">
+            <label htmlFor="name" className="text-sm text-gray-500 uppercase tracking-[0.2em]">
+              Name
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              value={formValues.name}
+              onChange={handleChange}
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-1 focus:ring-black transition bg-white"
+              placeholder="Jane Smith"
+              required
+            />
+          </div>
+
+          <div className="space-y-2 text-left">
+            <label htmlFor="email" className="text-sm text-gray-500 uppercase tracking-[0.2em]">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={formValues.email}
+              onChange={handleChange}
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-1 focus:ring-black transition bg-white"
+              placeholder="you@email.com"
+              required
+            />
+          </div>
+
+          <div className="space-y-2 text-left">
+            <label htmlFor="message" className="text-sm text-gray-500 uppercase tracking-[0.2em]">
+              Note
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formValues.message}
+              onChange={handleChange}
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-1 focus:ring-black transition bg-white min-h-[140px]"
+              placeholder="Hi Tyler — here’s the context on this payment…"
+              required
+            />
+          </div>
+
+          <div className="flex flex-col items-center gap-3">
+            <button
+              type="submit"
+              disabled={isSubmitDisabled}
+              className="inline-flex items-center gap-2 text-sm font-serif text-white bg-black rounded-full px-6 py-3 hover:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {status === 'loading' ? 'Sending…' : 'Send a note'}
+              {status === 'loading' && (
+                <motion.span
+                  className="inline-block w-2 h-2 bg-white rounded-full"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
+                  transition={{ repeat: Infinity, duration: 0.9, ease: 'easeInOut' }}
+                />
+              )}
+            </button>
+
+            <AnimatePresence mode="wait">
+              {status === 'success' && (
+                <motion.p
+                  key="success"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="text-sm text-green-600"
+                >
+                  Message sent. I’ll reply shortly.
+                </motion.p>
+              )}
+              {status === 'error' && (
+                <motion.p
+                  key="error"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="text-sm text-red-600"
+                >
+                  {errorMessage || 'Something went wrong. Please try again.'}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
+        </form>
+      </motion.section>
 
       <section className="w-full max-w-2xl mt-16 space-y-6">
         {Notes.map((note, index) => (
