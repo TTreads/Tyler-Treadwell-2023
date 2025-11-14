@@ -52,13 +52,13 @@ const Jobs: Job[] = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-black flex flex-col justify-start items-center px-6 pt-20 pb-10">
+    <main className="min-h-screen flex flex-col justify-start items-center px-6 pt-20 pb-10 text-black dark:text-gray-100 transition-colors duration-300">
       <div className="w-full max-w-2xl text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-3xl md:text-5xl font-serif mb-6 leading-snug"
+          className="text-3xl md:text-5xl font-serif mb-6 leading-snug text-black dark:text-gray-100"
         >
           <Balancer>Tyler Treadwell — a quiet collection of work.</Balancer>
         </motion.h1>
@@ -67,7 +67,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="text-[15px] text-gray-500 font-serif max-w-lg mx-auto mb-14 leading-relaxed"
+          className="text-[15px] text-gray-500 dark:text-gray-400 font-serif max-w-lg mx-auto mb-14 leading-relaxed"
         >
           I work with founders to shape elegant, end-to-end digital experiences—thoughtfully engineered with intent and clarity.
         </motion.p>
@@ -92,13 +92,13 @@ export default function Home() {
 function ExperienceItem({ job }: { job: Job }) {
   return (
     <div className="flex flex-col md:flex-row md:items-start gap-2 font-serif">
-      <div className="w-32 shrink-0 text-gray-400 text-sm">{job.date}</div>
+      <div className="w-32 shrink-0 text-gray-400 dark:text-gray-500 text-sm">{job.date}</div>
       <div>
         <a
           href={job.link || '#'}
           target={job.link ? '_blank' : '_self'}
           rel="noopener noreferrer"
-          className="text-base text-black hover:underline inline-flex items-center gap-1"
+          className="text-base text-black dark:text-gray-100 hover:underline inline-flex items-center gap-1"
         >
           <Balancer>
             {job.title}
@@ -115,12 +115,12 @@ function ExperienceItem({ job }: { job: Job }) {
             >
               <path
                 d="M3.5 3C3.22386 3 3 3.22386 3 3.5C3 3.77614 3.22386 4 3.5 4V3ZM8.5 3.5H9C9 3.22386 8.77614 3 8.5 3V3.5ZM8 8.5C8 8.77614 8.22386 9 8.5 9C8.77614 9 9 8.77614 9 8.5H8ZM2.64645 8.64645C2.45118 8.84171 2.45118 9.15829 2.64645 9.35355C2.84171 9.54882 3.15829 9.54882 3.35355 9.35355L2.64645 8.64645ZM3.5 4H8.5V3H3.5V4ZM8 3.5V8.5H9V3.5H8ZM8.14645 3.14645L2.64645 8.64645L3.35355 9.35355L8.85355 3.85355L8.14645 3.14645Z"
-                fill="#111"
+                fill="currentColor"
               />
             </svg>
           )}
         </a>
-        <div className="text-sm text-gray-500">{job.location}</div>
+        <div className="text-sm text-gray-500 dark:text-gray-400">{job.location}</div>
       </div>
     </div>
   );

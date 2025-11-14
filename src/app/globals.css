@@ -13,7 +13,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: #fefefe;
-
+  transition: background-color 0.3s ease, color 0.3s ease;
   font-family: Suisse Intl, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
   cursor: default;
@@ -113,29 +113,30 @@ Blink
 Dark Mode
 */
 
-.dark_theme {
-  background: #0d0d0c;
+body.dark_theme {
+  background: #050505;
+  color: #ebf1ff;
 }
 
-.dark_theme h3,
-.dark_theme h2,
-.dark_theme h1,
-.dark_theme p {
+body.dark_theme h3,
+body.dark_theme h2,
+body.dark_theme h1,
+body.dark_theme p {
   color: #ebf1ff !important;
 }
 
-.dark_theme {
-  color: #ebf1ff !important;
-}
-
-.dark_theme svg path {
+body.dark_theme svg path {
   fill: white !important;
 }
 
-.dark_theme footer:before {
+body.dark_theme footer:before {
   display: none;
 }
 
-.dark_theme a {
+body.dark_theme a {
   color: #fbff7d;
+}
+
+body.dark_theme footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }

@@ -74,46 +74,96 @@ export default function MainLayout({
 }) {
     const [Year, setYear] = React.useState(0)
     const [FadeDuration, setFadeDuration] = React.useState(0)
-    const [Theme, setTheme] = React.useState("light")
-    const [isDarkMode, setIsDarkMode] = React.useState(false);
-    const [CurrentDomain, setCurrentDomain] = React.useState("")
+    const [theme, setTheme] = React.useState<'light' | 'dark'>('light')
+    const [hasExplicitPreference, setHasExplicitPreference] = React.useState(false)
+
     useEffect(() => {
-        let date = new Date()
-        let year = date.getFullYear();
-        setYear(year)
+        const date = new Date()
+        setYear(date.getFullYear())
+        setFadeDuration(Jobs.length)
 
-        let fadeDur = Jobs.length
-        setFadeDuration(fadeDur)
-
-        if (typeof window !== 'undefined') {
-
-            const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-            const handleDarkModeChange = (event: { matches: boolean | ((prevState: boolean) => boolean) }) => {
-                setIsDarkMode(event.matches);
-            };
-
-            darkModeMediaQuery.addEventListener('change', handleDarkModeChange);
-
-            // Initial check
-            setIsDarkMode(darkModeMediaQuery.matches);
-
-            setCurrentDomain(window.location.origin)
-
+        if (typeof window === 'undefined') {
+            return
         }
 
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
+        const storedTheme = window.localStorage.getItem('theme')
 
-        setTheme('light');
+        if (storedTheme === 'dark' || storedTheme === 'light') {
+            setTheme(storedTheme)
+            setHasExplicitPreference(true)
+        } else if (prefersDark.matches) {
+            setTheme('dark')
+        }
 
+        const handleSystemThemeChange = (event: MediaQueryListEvent) => {
+            const hasExplicitPreference = window.localStorage.getItem('theme')
+            if (!hasExplicitPreference) {
+                setTheme(event.matches ? 'dark' : 'light')
+            }
+        }
 
+        prefersDark.addEventListener('change', handleSystemThemeChange)
 
-    }, [isDarkMode])
+        return () => prefersDark.removeEventListener('change', handleSystemThemeChange)
+    }, [])
+
+    useEffect(() => {
+        if (typeof document === 'undefined') {
+            return
+        }
+        document.documentElement.classList.toggle('dark', theme === 'dark')
+        document.body.classList.toggle('dark_theme', theme === 'dark')
+        if (typeof window !== 'undefined') {
+            if (hasExplicitPreference) {
+                window.localStorage.setItem('theme', theme)
+            } else {
+                window.localStorage.removeItem('theme')
+            }
+        }
+    }, [theme, hasExplicitPreference])
+
+    const toggleTheme = () => {
+        setHasExplicitPreference(true)
+        setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
+    }
 
     return (
-        <div className={`${Theme}`}>
+        <div className="transition-colors duration-300">
             {/* <header className="max-w-[100vw] min-h-[30px]"></header> */}
-            <main className='p-5 pt-0 min-h-[80vh] pb-0'>
+            <main className='p-5 pt-0 min-h-[80vh] pb-0 bg-white text-[#282C32] dark:bg-[#050505] dark:text-gray-100 transition-colors duration-300'>
                 <div className="max-w-[640px] m-auto md:p-5 pt-0 ">
+                    <div className="flex justify-end pb-4">
+                        <button
+                            type="button"
+                            onClick={toggleTheme}
+                            className="inline-flex hidden items-center gap-2 rounded-full border border-gray-300 dark:border-gray-700 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-gray-600 dark:text-gray-200 transition-colors duration-200 hover:border-black dark:hover:border-gray-400"
+                            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                        >
+                            {theme === 'dark' ? (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path
+                                        d="M12 18a6 6 0 0 0 0-12v12Zm0 0a6 6 0 1 1-5.657-8.486A7.5 7.5 0 0 0 12 21a7.5 7.5 0 0 0 6.657-11.486A6 6 0 0 1 12 18Z"
+                                        stroke="currentColor"
+                                        strokeWidth="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </svg>
+                            ) : (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path
+                                        d="M12 5V3m5 9h2m-7 7v2m-7-9H3m15.364 6.364 1.414 1.414M4.222 6.222 5.636 7.636m0 8.728-1.414 1.414M18.364 7.636l1.414-1.414M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+                                        stroke="currentColor"
+                                        strokeWidth="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </svg>
+                            )}
+                            <span>{theme === 'dark' ? 'Light' : 'Dark'}</span>
+                        </button>
+                    </div>
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }} // Initial state (hidden)
@@ -187,8 +237,6 @@ function ExperienceItem(props: any) {
         </div>
     </div>
 }
-
-
 
 
 
