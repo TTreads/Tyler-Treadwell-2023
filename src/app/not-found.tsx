@@ -2,17 +2,17 @@ import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <section className="min-h-[70vh] flex flex-col items-center justify-center text-center px-6 py-16 bg-white text-black">
-      <p className="text-xs tracking-[0.3em] uppercase text-gray-400">Error 404</p>
+    <section className="min-h-[70vh] flex flex-col items-center justify-center text-center px-6 py-16 bg-white dark:bg-[#050505] text-black dark:text-gray-100">
+      <p className="text-xs tracking-[0.3em] uppercase text-gray-400 dark:text-gray-400">Error 404</p>
       <h1 className="mt-4 text-4xl md:text-5xl font-serif leading-tight">
         The page you&apos;re looking for has slipped away.
       </h1>
-      <p className="mt-4 max-w-xl text-sm md:text-base text-gray-500 font-serif leading-relaxed">
+      <p className="mt-4 max-w-xl text-sm md:text-base text-gray-500 font-serif leading-relaxed dark:text-gray-400">
         It may have been renamed, archived, or never existed. Let&apos;s head back to the calm center of the site.
       </p>
       <Link
         href="/"
-        className="mt-10 inline-flex items-center gap-2 rounded-full border border-black px-6 py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white"
+        className="mt-10 inline-flex items-center gap-2 rounded-full border border-black dark:border-gray-200 px-6 py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
       >
         Return home
         <svg

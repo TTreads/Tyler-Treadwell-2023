@@ -23,13 +23,13 @@ const Highlights = [
 
 export default function ThankYouContent() {
   return (
-    <main className="min-h-screen bg-white text-black flex flex-col justify-start items-center px-6 pt-24 pb-16">
+    <main className="min-h-screen bg-white dark:bg-[#050505] text-black dark:text-gray-100 flex flex-col justify-start items-center px-6 pt-24 pb-16">
       <div className="w-full max-w-2xl text-center space-y-6">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-xs uppercase tracking-[0.4em] text-gray-400"
+          className="text-xs uppercase tracking-[0.4em] text-gray-400 dark:text-gray-400"
         >
           Thank you
         </motion.p>
@@ -47,7 +47,7 @@ export default function ThankYouContent() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-[15px] text-gray-500 font-serif leading-relaxed max-w-xl mx-auto"
+          className="text-[15px] text-gray-500 font-serif leading-relaxed max-w-xl mx-auto dark:text-gray-400"
         >
           Everything is squared away. I will follow up shortly with next steps and make sure you have complete visibility
           into the work in progress. If you need anything specific—simply reply to the confirmation email.
@@ -61,10 +61,10 @@ export default function ThankYouContent() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.15 + 0.4, duration: 0.7 }}
-            className="border border-gray-200 rounded-xl p-6 bg-white/80 shadow-sm"
+            className="border border-gray-200 dark:border-gray-700 rounded-xl p-6 bg-white/80 dark:bg-white/5 shadow-sm"
           >
-            <h2 className="text-base font-serif text-black mb-2">{highlight.title}</h2>
-            <p className="text-sm font-serif text-gray-500 leading-relaxed">{highlight.description}</p>
+            <h2 className="text-base font-serif mb-2 dark:text-gray-100">{highlight.title}</h2>
+            <p className="text-sm font-serif text-gray-500 leading-relaxed dark:text-gray-400">{highlight.description}</p>
           </motion.div>
         ))}
       </section>
@@ -77,7 +77,7 @@ export default function ThankYouContent() {
       >
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm font-serif text-black border border-black rounded-full px-5 py-2 hover:bg-black hover:text-white transition"
+          className="inline-flex items-center gap-2 text-sm font-serif text-black border border-black rounded-full px-5 py-2 hover:bg-black hover:text-white transition dark:text-gray-100 dark:border-gray-200 dark:hover:bg-white dark:hover:text-black"
         >
           Return home
           <span aria-hidden="true">↗</span>
